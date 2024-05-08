@@ -15,6 +15,11 @@ std::string CallArkTSStaticMethod(aki::Value av) {
     return res.As<std::string>();
 }
 
+int AsyncTaskReturnInt() {
+    AKI_LOG(INFO) << "[Aki] run async task";
+    return rand();
+}
+
 // Step 1 注册 AKI 插件
 JSBIND_ADDON(entry) // 注册 AKI 插件名: 即为编译*.so名称，规则与NAPI一致
 
@@ -22,4 +27,5 @@ JSBIND_ADDON(entry) // 注册 AKI 插件名: 即为编译*.so名称，规则与N
 JSBIND_GLOBAL() {
     JSBIND_FUNCTION(SayHello);
     JSBIND_FUNCTION(CallArkTSStaticMethod, "callArkTSStaticMethod"); 
+    JSBIND_PFUNCTION(AsyncTaskReturnInt, "asyncTaskReturnInt");
 }

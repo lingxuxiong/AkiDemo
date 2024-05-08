@@ -23,6 +23,10 @@ struct Index {
             hilog.info(0x0000, 'testTag', 'SayHello type: %{public}s', typeof testNapi.SayHello);
             hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', testNapi.SayHello("hello world"));
             hilog.info(0x0000, 'testTag', 'callArkTSStaticMethod response: %{public}s', testNapi.callArkTSStaticMethod(ImageProcess));
+
+            testNapi.asyncTaskReturnInt().then(res => {
+              console.log('[AkiUI] AsyncTaskReturnInt: ' + res)
+            });
           })
       }
       .width('100%')
