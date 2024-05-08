@@ -10,7 +10,7 @@
 class TaskRunner {
 public:
     TaskRunner() = default;
-    std::string DoTask() {
+    std::string doTask() {
         AKI_LOG(INFO) << "DoTask";
         return "done.";
     }
@@ -18,12 +18,12 @@ public:
 
 JSBIND_CLASS(TaskRunner) {
     JSBIND_CONSTRUCTOR<>();
-    JSBIND_PMETHOD(DoTask, "doTask");
+    JSBIND_PMETHOD(doTask);
 }
 
-int AsyncTaskReturnInt2() {
+int asyncTaskReturnInt2() {
     AKI_LOG(INFO) << "[Aki] run async task2";
     return rand(); 
 }
 
-JSBIND_GLOBAL() { JSBIND_PFUNCTION(AsyncTaskReturnInt2, "asyncTaskReturnInt2"); }
+JSBIND_GLOBAL() { JSBIND_PFUNCTION(asyncTaskReturnInt2); }

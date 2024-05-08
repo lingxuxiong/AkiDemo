@@ -7,15 +7,15 @@
 #include <aki/jsbind.h>
 #include <string>
 
-std::string SayHello(std::string msg) { return msg + " too."; }
+std::string sayHello(std::string msg) { return msg + " too."; }
 
-std::string CallArkTSStaticMethod(aki::Value av) {
+std::string callArkTSStaticMethod(aki::Value av) {
     aki::Value res = av.CallMethod("foo");
     AKI_LOG(INFO) << "C++ call JS static Fun: " << res.As<std::string>();
     return res.As<std::string>();
 }
 
-int AsyncTaskReturnInt() {
+int asyncTaskReturnInt() {
     AKI_LOG(INFO) << "[Aki] run async task";
     return rand();
 }
@@ -25,7 +25,7 @@ JSBIND_ADDON(entry) // 注册 AKI 插件名: 即为编译*.so名称，规则与N
 
 // Step 2 注册 FFI 特性
 JSBIND_GLOBAL() {
-    JSBIND_FUNCTION(SayHello, "sayHello");
-    JSBIND_FUNCTION(CallArkTSStaticMethod, "callArkTSStaticMethod"); 
-    JSBIND_PFUNCTION(AsyncTaskReturnInt, "asyncTaskReturnInt");
+    JSBIND_FUNCTION(sayHello);
+    JSBIND_FUNCTION(callArkTSStaticMethod); 
+    JSBIND_PFUNCTION(asyncTaskReturnInt);
 }
