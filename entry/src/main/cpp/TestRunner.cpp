@@ -18,7 +18,7 @@ public:
 
 JSBIND_CLASS(TaskRunner) {
     JSBIND_CONSTRUCTOR<>();
-    JSBIND_PMETHOD(DoTask);
+    JSBIND_PMETHOD(DoTask, "doTask");
 }
 
 int AsyncTaskReturnInt2() {
@@ -26,4 +26,4 @@ int AsyncTaskReturnInt2() {
     return rand(); 
 }
 
-JSBIND_GLOBAL() { JSBIND_PFUNCTION(AsyncTaskReturnInt2); }
+JSBIND_GLOBAL() { JSBIND_PFUNCTION(AsyncTaskReturnInt2, "asyncTaskReturnInt2"); }

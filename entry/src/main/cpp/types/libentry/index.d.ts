@@ -1,10 +1,22 @@
-export const add: (a: number, b: number) => number;
-export const SayHello: (msg: string) => string;
-export const CallArkTSStaticMethod: (obj: object) => string;
-export const AsyncTaskReturnInt: () => Promise<number>;
-export const AsyncTaskReturnInt2: () => Promise<number>;
+/**
+ * Aki Test Module
+ * @since 1.0
+ * @sysCap 系统能力
+ * @devices 支持设备
+ * @import 导入模块
+ * @permission 权限列表
+ */
+declare namespace akiTest {
+  function add(a: number, b: number): number
+  function sayHello(msg: string): string;
+  function callArkTSStaticMethod(obj: object): string;
+  function asyncTaskReturnInt(): Promise<number>;
+  function asyncTaskReturnInt2(): Promise<number>;
 
-export class TaskRunner {
-  TaskRunner();
-  DoTask: () => Promise<number>
+  export class TaskRunner {
+    TaskRunner();
+    doTask: () => Promise<number>
+  }
 }
+
+export default akiTest;

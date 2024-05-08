@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi, { TaskRunner } from 'libentry.so';
+import akiTest from 'libentry.so';
 
 class ImageProcess {
   static foo(): string {
@@ -19,21 +19,21 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            // hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
-            hilog.info(0x0000, 'testTag', 'SayHello type: %{public}s', typeof testNapi.SayHello);
-            hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', testNapi.SayHello("hello world"));
-            hilog.info(0x0000, 'testTag', 'callArkTSStaticMethod response: %{public}s', testNapi.CallArkTSStaticMethod(ImageProcess));
+            // hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', akiTest.add(2, 3));
+            hilog.info(0x0000, 'testTag', 'SayHello type: %{public}s', typeof akiTest.sayHello);
+            hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', akiTest.sayHello("hello world"));
+            hilog.info(0x0000, 'testTag', 'callArkTSStaticMethod response: %{public}s', akiTest.callArkTSStaticMethod(ImageProcess));
 
-            testNapi.AsyncTaskReturnInt().then(res => {
+            akiTest.asyncTaskReturnInt().then(res => {
               console.log('[AkiUI] AsyncTaskReturnInt: ' + res)
             });
 
-            testNapi.AsyncTaskReturnInt2().then(res => {
+            akiTest.asyncTaskReturnInt2().then(res => {
               console.log('[AkiUI] AsyncTaskReturnInt2: ' + res)
             });
 
-            let taskRunner: TaskRunner = new testNapi.TaskRunner();
-            taskRunner.DoTask().then(res => {
+            let taskRunner = new akiTest.TaskRunner();
+            taskRunner.doTask().then(res => {
               console.log('[AKI] DoTask: ' + res)
             });
           })
