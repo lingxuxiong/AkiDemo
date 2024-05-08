@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+import testNapi, { TaskRunner } from 'libentry.so';
 
 class ImageProcess {
   static foo(): string {
@@ -26,6 +26,15 @@ struct Index {
 
             testNapi.asyncTaskReturnInt().then(res => {
               console.log('[AkiUI] AsyncTaskReturnInt: ' + res)
+            });
+
+            testNapi.asyncTaskReturnInt2().then(res => {
+              console.log('[AkiUI] AsyncTaskReturnInt2: ' + res)
+            });
+
+            let taskRunner: TaskRunner = new testNapi.TaskRunner();
+            taskRunner.DoTask().then(res => {
+              console.log('[AKI] DoTask: ' + res)
             });
           })
       }
