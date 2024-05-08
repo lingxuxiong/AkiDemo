@@ -26,6 +26,6 @@ JSBIND_ADDON(entry) // 注册 AKI 插件名: 即为编译*.so名称，规则与N
 // Step 2 注册 FFI 特性
 JSBIND_GLOBAL() {
     JSBIND_FUNCTION(SayHello);
-    JSBIND_FUNCTION(CallArkTSStaticMethod, "callArkTSStaticMethod"); 
-    JSBIND_PFUNCTION(AsyncTaskReturnInt, "asyncTaskReturnInt");
+    JSBIND_FUNCTION(CallArkTSStaticMethod); 
+    JSBIND_PFUNCTION(AsyncTaskReturnInt);
 }

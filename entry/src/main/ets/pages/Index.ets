@@ -22,13 +22,13 @@ struct Index {
             // hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
             hilog.info(0x0000, 'testTag', 'SayHello type: %{public}s', typeof testNapi.SayHello);
             hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', testNapi.SayHello("hello world"));
-            hilog.info(0x0000, 'testTag', 'callArkTSStaticMethod response: %{public}s', testNapi.callArkTSStaticMethod(ImageProcess));
+            hilog.info(0x0000, 'testTag', 'callArkTSStaticMethod response: %{public}s', testNapi.CallArkTSStaticMethod(ImageProcess));
 
-            testNapi.asyncTaskReturnInt().then(res => {
+            testNapi.AsyncTaskReturnInt().then(res => {
               console.log('[AkiUI] AsyncTaskReturnInt: ' + res)
             });
 
-            testNapi.asyncTaskReturnInt2().then(res => {
+            testNapi.AsyncTaskReturnInt2().then(res => {
               console.log('[AkiUI] AsyncTaskReturnInt2: ' + res)
             });
 

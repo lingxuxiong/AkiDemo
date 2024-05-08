@@ -26,4 +26,4 @@ int AsyncTaskReturnInt2() {
     return rand(); 
 }
 
-JSBIND_GLOBAL() { JSBIND_PFUNCTION(AsyncTaskReturnInt2, "asyncTaskReturnInt2"); }
+JSBIND_GLOBAL() { JSBIND_PFUNCTION(AsyncTaskReturnInt2); }
