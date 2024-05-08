@@ -1,6 +1,12 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
+class ImageProcess {
+  static foo(): string {
+    return "this is foo"
+  }
+}
+
 @Entry
 @Component
 struct Index {
@@ -16,6 +22,7 @@ struct Index {
             // hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
             hilog.info(0x0000, 'testTag', 'SayHello type: %{public}s', typeof testNapi.SayHello);
             hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', testNapi.SayHello("hello world"));
+            hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', testNapi.callArkTSStaticMethod(ImageProcess));
           })
       }
       .width('100%')
