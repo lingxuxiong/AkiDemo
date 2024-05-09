@@ -20,10 +20,6 @@ int asyncTaskReturnInt() {
     return rand();
 }
 
-// Step 1 注册 AKI 插件
-JSBIND_ADDON(entry) // 注册 AKI 插件名: 即为编译*.so名称，规则与NAPI一致
-
-// Step 2 注册 FFI 特性
 JSBIND_GLOBAL() {
     JSBIND_FUNCTION(sayHello);
     JSBIND_FUNCTION(callArkTSStaticMethod); 

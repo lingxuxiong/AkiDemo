@@ -19,7 +19,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            // hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', akiTest.add(2, 3));
+            hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', akiTest.add(2, 3));
             hilog.info(0x0000, 'testTag', 'SayHello type: %{public}s', typeof akiTest.sayHello);
             hilog.info(0x0000, 'testTag', 'SayHello response: %{public}s', akiTest.sayHello("hello world"));
             hilog.info(0x0000, 'testTag', 'callArkTSStaticMethod response: %{public}s', akiTest.callArkTSStaticMethod(ImageProcess));
