@@ -4,9 +4,9 @@
 // Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
 // please include "napi/native_api.h".
 
+#include <bits/alltypes.h>
 #include <string>
 #include <aki/jsbind.h>
-#include "test-aki.h";
 
 static std::string sayHello(std::string msg) { return msg + " too."; }
 
@@ -23,16 +23,29 @@ static int asyncTaskReturnInt() {
 
 class TaskRunner {
 public:
-    TaskRunner() = default;
+    TaskRunner(): value(0) {};
+    TaskRunner(int val): value(val) {}
+    ~TaskRunner() = default;
+    
     std::string doTask() {
         AKI_LOG(INFO) << "DoTask";
         return "done.";
     }
+    
+    int getValue() {
+        return value;
+    }
+    
+public:
+    int value;
 };
 
 JSBIND_CLASS(TaskRunner) {
     JSBIND_CONSTRUCTOR<>();
+    JSBIND_CONSTRUCTOR<int>();
+    JSBIND_METHOD(getValue);
     JSBIND_PMETHOD(doTask);
+    JSBIND_PROPERTY(value);
 }
 
 JSBIND_GLOBAL() {

@@ -13,8 +13,14 @@ declare namespace akiTest {
   function asyncTaskReturnInt(): Promise<number>;
 
   export class TaskRunner {
-    TaskRunner();
-    doTask: () => Promise<number>
+    constructor();
+    constructor(num: number);
+
+    doTask: () => Promise<number>;
+
+    getValue: () => number;
+
+    value: number;
   }
 }
 

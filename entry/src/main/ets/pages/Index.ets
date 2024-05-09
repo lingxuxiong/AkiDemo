@@ -28,7 +28,11 @@ struct Index {
               console.log('[AkiUI] AsyncTaskReturnInt: ' + res)
             });
 
-            let taskRunner = new akiTest.TaskRunner();
+            let taskRunner = new akiTest.TaskRunner(500);
+            hilog.info(0x0000, 'testTag', 'before taskRunner.value = %{public}d', taskRunner.getValue());
+            taskRunner.value = 1;
+            hilog.info(0x0000, 'testTag', 'after taskRunner.value = %{public}d', taskRunner.getValue());
+
             taskRunner.doTask().then(res => {
               console.log('[AKI] DoTask: ' + res)
             });
