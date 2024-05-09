@@ -12,7 +12,7 @@ declare namespace akiTest {
   function callArkTSStaticMethod(obj: object): string;
   function asyncTaskReturnInt(): Promise<number>;
 
-  export class TaskRunner {
+  class TaskRunner {
     constructor();
     constructor(num: number);
 
@@ -22,7 +22,16 @@ declare namespace akiTest {
 
     value: number;
     time: number;
+    state: TaskState;
   }
+
+  enum TaskState {
+    INITIALIZED,
+    STARTED,
+    STOPPED,
+    FINISHED,
+  }
+
 }
 
 export default akiTest;

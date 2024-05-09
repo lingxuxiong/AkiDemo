@@ -21,6 +21,13 @@ static int asyncTaskReturnInt() {
     return rand();
 }
 
+enum TaskState {
+    INITIALIZED,
+    STARTED,
+    STOPPED,
+    FINISHED,
+};
+
 class TaskRunner {
 public:
     TaskRunner(): value(0) {};
@@ -46,9 +53,20 @@ public:
         this->time = time;
     }
     
+    TaskState getState() {
+        AKI_LOG(INFO) << "get cur state: " << state;
+        return state;
+    }
+    
+    void setState(TaskState state) {
+        AKI_LOG(INFO) << "change to new state: " << state;
+        this->state = state;
+    }
+    
 public:
     int value;
     long time;
+    TaskState state = INITIALIZED;
 };
 
 JSBIND_CLASS(TaskRunner) {
@@ -58,6 +76,14 @@ JSBIND_CLASS(TaskRunner) {
     JSBIND_PMETHOD(doTask);
     JSBIND_PROPERTY(value);
     JSBIND_FIELD("time", getTime, setTime);
+    JSBIND_FIELD("state", getState, setState);
+}
+
+JSBIND_ENUM(TaskState) {
+    JSBIND_ENUM_VALUE(INITIALIZED);
+    JSBIND_ENUM_VALUE(STARTED);
+    JSBIND_ENUM_VALUE(STOPPED);
+    JSBIND_ENUM_VALUE(FINISHED);
 }
 
 JSBIND_GLOBAL() {

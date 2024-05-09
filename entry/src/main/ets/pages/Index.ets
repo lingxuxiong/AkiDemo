@@ -32,6 +32,10 @@ struct Index {
             taskRunner.time = 1000;
             hilog.info(0x0000, 'testTag', 'taskRunner.time = %{public}d', taskRunner.time);
 
+            hilog.info(0x0000, 'testTag', 'taskRunner current state = %{public}d', taskRunner.state);
+            taskRunner.state = akiTest.TaskState.FINISHED;
+            hilog.info(0x0000, 'testTag', 'taskRunner new state = %{public}d', taskRunner.state);
+
             hilog.info(0x0000, 'testTag', 'before taskRunner.value = %{public}d', taskRunner.getValue());
             taskRunner.value = 1;
             hilog.info(0x0000, 'testTag', 'after taskRunner.value = %{public}d', taskRunner.getValue());
