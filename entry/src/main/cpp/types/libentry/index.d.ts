@@ -11,7 +11,6 @@ declare namespace akiTest {
   function sayHello(msg: string): string;
   function callArkTSStaticMethod(obj: object): string;
   function asyncTaskReturnInt(): Promise<number>;
-  function asyncTaskReturnInt2(): Promise<number>;
 
   export class TaskRunner {
     TaskRunner();

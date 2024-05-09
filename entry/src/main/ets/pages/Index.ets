@@ -28,10 +28,6 @@ struct Index {
               console.log('[AkiUI] AsyncTaskReturnInt: ' + res)
             });
 
-            akiTest.asyncTaskReturnInt2().then(res => {
-              console.log('[AkiUI] AsyncTaskReturnInt2: ' + res)
-            });
-
             let taskRunner = new akiTest.TaskRunner();
             taskRunner.doTask().then(res => {
               console.log('[AKI] DoTask: ' + res)

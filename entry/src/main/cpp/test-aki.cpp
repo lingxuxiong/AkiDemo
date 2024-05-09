@@ -21,11 +21,6 @@ static int asyncTaskReturnInt() {
     return rand();
 }
 
-static int asyncTaskReturnInt2() {
-    AKI_LOG(INFO) << "[Aki] run async task2";
-    return rand();
-}
-
 class TaskRunner {
 public:
     TaskRunner() = default;
@@ -44,5 +39,4 @@ JSBIND_GLOBAL() {
     JSBIND_FUNCTION(sayHello);
     JSBIND_FUNCTION(callArkTSStaticMethod);
     JSBIND_PFUNCTION(asyncTaskReturnInt);
-    JSBIND_PFUNCTION(asyncTaskReturnInt2); 
 }
