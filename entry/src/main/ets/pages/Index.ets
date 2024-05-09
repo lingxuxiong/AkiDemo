@@ -5,7 +5,22 @@ class ImageProcess {
   static foo(): string {
     return "this is foo"
   }
+
+  public static sayHelloFromJS(value: string): string {
+    console.log('what do you say: ' + value);
+    return 'hello from JS';
+  }
+
+  public static processBitmap(localImageFilePath: string, rotate: number): ArrayBuffer {
+    let buf = new ArrayBuffer(2);
+    let data = new Uint8Array(buf);
+    data[0] = 10;
+    data[1] = 120;
+    return buf;
+  }
 }
+
+akiTest.JSBind.bindFunction("sayHelloFromJS", ImageProcess.sayHelloFromJS);
 
 @Entry
 @Component

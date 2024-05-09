@@ -4,11 +4,18 @@
 // Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
 // please include "napi/native_api.h".
 
+#include "aki/include/aki/jsbind.h"
 #include <bits/alltypes.h>
 #include <string>
 #include <aki/jsbind.h>
 
 static std::string sayHello(std::string msg) { return msg + " too."; }
+
+static void sayHelloToJsFunction(std::string msg) {
+    auto jsFunc = aki::JSBind::GetJSFunction("sayHelloFromJS");
+    auto result = jsFunc->Invoke<std::string>(msg);
+    AKI_LOG(INFO) << "got response from JS: " << result;
+}
 
 static std::string callArkTSStaticMethod(aki::Value av) {
     aki::Value res = av.CallMethod("foo");
@@ -36,6 +43,7 @@ public:
     
     std::string doTask() {
         AKI_LOG(INFO) << "DoTask";
+        sayHelloToJsFunction("Hello JS Call");
         return "done.";
     }
     
