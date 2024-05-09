@@ -21,6 +21,7 @@ declare namespace akiTest {
     getValue: () => number;
 
     value: number;
+    time: number;
   }
 }
 

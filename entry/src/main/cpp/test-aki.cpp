@@ -36,8 +36,19 @@ public:
         return value;
     }
     
+    long getTime() {
+        AKI_LOG(INFO) << "getTime: " << time;
+        return time;
+    }
+    
+    void setTime(long time) {
+        AKI_LOG(INFO) << "setTime: " << time;
+        this->time = time;
+    }
+    
 public:
     int value;
+    long time;
 };
 
 JSBIND_CLASS(TaskRunner) {
@@ -46,6 +57,7 @@ JSBIND_CLASS(TaskRunner) {
     JSBIND_METHOD(getValue);
     JSBIND_PMETHOD(doTask);
     JSBIND_PROPERTY(value);
+    JSBIND_FIELD("time", getTime, setTime);
 }
 
 JSBIND_GLOBAL() {
