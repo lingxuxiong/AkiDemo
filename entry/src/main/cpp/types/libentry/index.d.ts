@@ -34,8 +34,8 @@ declare namespace akiTest {
 
   class JSBind {
     static bindFunction(name: string, func: Function): string;
+    static initTaskRunner(name: string): void;
   }
-
 }
 
 export default akiTest;

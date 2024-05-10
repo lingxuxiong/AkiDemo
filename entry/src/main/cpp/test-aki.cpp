@@ -44,7 +44,14 @@ public:
     std::string doTask() {
         AKI_LOG(INFO) << "DoTask";
         sayHelloToJsFunction("Hello JS Call");
+        postTask();
         return "done.";
+    }
+    
+    void postTask() {
+        aki::TaskRunner::PostTask("myTaskRunner", []() {
+            AKI_LOG(INFO) << "new log for JS UI thread";
+        });
     }
     
     int getValue() {

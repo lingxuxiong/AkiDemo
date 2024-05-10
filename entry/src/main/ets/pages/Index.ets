@@ -21,6 +21,7 @@ class ImageProcess {
 }
 
 akiTest.JSBind.bindFunction("sayHelloFromJS", ImageProcess.sayHelloFromJS);
+akiTest.JSBind.initTaskRunner("myTaskRunner");
 
 @Entry
 @Component
